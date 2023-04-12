@@ -10,7 +10,7 @@ The [`autometrics.rules.yml`](./autometrics.rules.yml) file contains the default
 
 **This should work for most autometrics-instrumented projects without modification.**
 
-Specifically, these rules will work for any project that uses the following objective percentils: 90%, 95%, 99%, 99.9%.
+Specifically, these rules will work for any project that uses the following objective percentiles: 90%, 95%, 99%, 99.9%.
 
 This file sets up a number of recording and alerting rules that are dormant by default and are only enabled when the autometrics libraries product metrics with special labels: `function_calls_count{objective_name="", objective_percentile=""}` or `function_calls_duration_bucket{objective_name="", objective_latency_threshold="", objective_percentile=""}`.
 
