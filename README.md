@@ -4,6 +4,12 @@
 
 This repo contains resources shared between all of the [Autometrics](https://github.com/autometrics-dev) implementations.
 
+## Dashboards
+
+You can find the Grafana dashboard JSON files in the [dashboards](./dashboards/) directory.
+
+These will work out of the box once you have imported them into Grafana and selected the Prometheus data source for them to use.
+
 ## Prometheus Recording & Alerting Rules
 
 The [`autometrics.rules.yml`](./autometrics.rules.yml) file contains the default recording and alerting rules for Prometheus.
