@@ -34,7 +34,6 @@ Then run:
 
 ```shell
 git clone https://github.com/autometrics-dev/autometrics-rs.git`
-cd autometrics-rs
 cargo run -p autometrics-cli generate-sloth-file > sloth.yml
 docker run -v $(pwd):/data  ghcr.io/slok/sloth generate -i /data/sloth.yml -o /data/autometrics.rules.yml
 ```
