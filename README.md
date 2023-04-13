@@ -16,7 +16,20 @@ The [`autometrics.rules.yml`](./autometrics.rules.yml) file contains the default
 
 **This should work for most autometrics-instrumented projects without modification.**
 
-Specifically, these rules will work for any project that uses the following objective percentiles: 90%, 95%, 99%, 99.9%.
+Specifically, these rules will work for any project that uses the following objective percentiles: 90%, 95%, 99%, 99.9%. Projects that want to use other percentiles can generate a new rules file, specifying the `objectives` for the `autometrics-cli`'s `generate-sloth-file` command (see [here](https://github.com/autometrics-dev/autometrics-rs/tree/main/autometrics-cli)).
+
+## Adding the rules to Prometheus
+
+Prometheus can be configured to use the `autometrics.rules.yml` file using the `rule_files` field in the [Prometheus config](https://prometheus.io/docs/prometheus/latest/configuration/configuration):
+
+```yaml
+# prometheus.yml
+
+rule_files:
+  - /path/to/autometrics.rules.yml
+```
+
+### How it works
 
 This file sets up a number of recording and alerting rules that are dormant by default and are only enabled when the autometrics libraries product metrics with special labels: `function_calls_count{objective_name="", objective_percentile=""}` or `function_calls_duration_bucket{objective_name="", objective_latency_threshold="", objective_percentile=""}`.
 
