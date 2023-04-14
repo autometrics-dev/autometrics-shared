@@ -155,10 +155,7 @@
       "id": 4,
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ],
+          "calcs": ["lastNotNull", "max"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -261,10 +258,7 @@
       "id": 2,
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ],
+          "calcs": ["lastNotNull", "max"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -299,9 +293,7 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "autometrics"
-  ],
+  "tags": ["autometrics"],
   "templating": {
     "list": [
       {
@@ -379,7 +371,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Autometrics Overview",
-  "uid": "autometrics2",
+  "uid": "autometrics-overview",
   "version": 19,
   "weekStart": ""
 }
