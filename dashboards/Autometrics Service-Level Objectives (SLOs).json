@@ -132,9 +132,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "/^Value$/",
           "values": false
         },
@@ -211,9 +209,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "/^Value$/",
           "values": false
         },
@@ -304,10 +300,7 @@
       "id": 15,
       "options": {
         "legend": {
-          "calcs": [
-            "min",
-            "max"
-          ],
+          "calcs": ["min", "max"],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true,
@@ -401,9 +394,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -476,9 +467,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -575,9 +564,7 @@
       "id": 22,
       "options": {
         "legend": {
-          "calcs": [
-            "max"
-          ],
+          "calcs": ["max"],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true,
@@ -610,9 +597,7 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "autometrics"
-  ],
+  "tags": ["autometrics"],
   "templating": {
     "list": [
       {
@@ -735,7 +720,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Autometrics Service-Level Objectives (SLOs)",
-  "uid": "gRMezQB4k",
+  "uid": "autometrics-objectives",
   "version": 5,
   "weekStart": ""
 }

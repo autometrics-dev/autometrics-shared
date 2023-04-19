@@ -129,10 +129,7 @@
       "id": 4,
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ],
+          "calcs": ["lastNotNull", "max"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -233,10 +230,7 @@
       "id": 2,
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ],
+          "calcs": ["lastNotNull", "max"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -271,9 +265,7 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "autometrics"
-  ],
+  "tags": ["autometrics"],
   "templating": {
     "list": [
       {
@@ -312,7 +304,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Autometrics Function Explorer",
-  "uid": "UmP_Puf4z",
+  "uid": "autometrics-function-explorer",
   "version": 6,
   "weekStart": ""
 }
