@@ -649,7 +649,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus_on_fly"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values({__name__=~\"function_calls_count(:?_total)?\", objective_name=\"$success_rate_objective\"}, objective_percentile)",
         "hide": 2,
@@ -697,7 +697,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus_on_fly"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(function_calls_duration_bucket{objective_name=\"$latency_objective\"}, objective_latency_threshold)",
         "hide": 2,
