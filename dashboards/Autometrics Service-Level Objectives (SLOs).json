@@ -102,16 +102,16 @@
                 "value": null
               },
               {
-                "color": "red",
-                "value": 0.7
-              },
-              {
-                "color": "#EAB839",
-                "value": 0.8
-              },
-              {
-                "color": "green",
+                "color": "semi-dark-orange",
                 "value": 0.9
+              },
+              {
+                "color": "semi-dark-yellow",
+                "value": 0.95
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 0.99
               }
             ]
           },
@@ -138,7 +138,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.4.3",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -147,7 +147,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "1 - sum(rate(function_calls_count{objective_name=\"$success_rate_objective\", result=\"error\"}[$__range])) / (sum(rate(function_calls_count{objective_name=\"$success_rate_objective\"}[$__range])) > 0)",
+          "expr": "1 - (\n  sum(\n    rate(\n      {\n        __name__=~\"function_calls_count(:?_total)?\", \n        objective_name=\"$success_rate_objective\", \n        result=\"error\"\n      }[$__range])\n    ) or on() vector(0)\n  ) / (\n    sum(\n      rate(\n        {\n          __name__=~\"function_calls_count(:?_total)?\", \n          objective_name=\"$success_rate_objective\"\n        }[$__range]\n      )\n    ) > 0\n  )",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -179,16 +179,16 @@
                 "value": null
               },
               {
-                "color": "red",
-                "value": 0.7
-              },
-              {
-                "color": "#EAB839",
-                "value": 0.8
-              },
-              {
-                "color": "green",
+                "color": "semi-dark-yellow",
                 "value": 0.9
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 0.95
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 0.99
               }
             ]
           },
@@ -224,7 +224,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "1 - sum(rate(function_calls_count{objective_name=\"$success_rate_objective\", result=\"error\"}[$__range])) / (sum(rate(function_calls_count{objective_name=\"$success_rate_objective\"}[$__range])) > 0)",
+          "expr": "1 - (\n  sum(\n    rate(\n      {\n        __name__=~\"function_calls_count(:?_total)?\", \n        objective_name=\"$success_rate_objective\", \n        result=\"error\"\n      }[$__range]\n    )\n  ) or on() vector(0)\n) / (\n  sum(\n    rate(\n      {\n        __name__=~\"function_calls_count(:?_total)?\", \n        objective_name=\"$success_rate_objective\"\n      }[$__range]\n    )\n  ) > 0\n)",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -319,7 +319,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(sum by (function, module) (rate(function_calls_count{objective_name=\"$success_rate_objective\", result=\"error\"}[$__rate_interval])) > 0)\n/ (sum by (function, module) (rate(function_calls_count{objective_name=\"$success_rate_objective\"}[$__rate_interval])) > 0)",
+          "expr": "(\n  sum by (function, module) (\n    rate(\n      {\n        __name__=~\"function_calls_count(:?_total)?\", \n        objective_name=\"$success_rate_objective\", \n        result=\"error\"\n      }[$__rate_interval]\n    )\n  ) > 0\n) / (\n  sum by (function, module) (\n    rate(\n      {\n        __name__=~\"function_calls_count(:?_total)?\", \n        objective_name=\"$success_rate_objective\"\n      }[$__rate_interval]\n    )\n  ) > 0\n)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -364,16 +364,16 @@
                 "value": null
               },
               {
-                "color": "red",
-                "value": 0.7
-              },
-              {
-                "color": "#EAB839",
-                "value": 0.8
-              },
-              {
-                "color": "green",
+                "color": "semi-dark-yellow",
                 "value": 0.9
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 0.95
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 0.99
               }
             ]
           },
@@ -409,7 +409,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(function_calls_duration_bucket{objective_name=\"$latency_objective\", le=\"$latency_objective_latency_threshold\"}[$__range])) \n/ (sum(rate(function_calls_duration_count{objective_name=\"$latency_objective\"}[$__range])) > 0)",
+          "expr": "(\n  sum(\n    rate(\n      function_calls_duration_bucket{\n        objective_name=\"$latency_objective\", \n        le=\"$latency_objective_latency_threshold\"\n      }[$__range]\n    )\n  ) or on() vector(0)\n) / (\n  sum(\n    rate(\n      function_calls_duration_count{\n        objective_name=\"$latency_objective\"\n      }[$__range]\n    )\n  ) > 0\n)",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -441,12 +441,16 @@
                 "value": null
               },
               {
-                "color": "yellow",
-                "value": 0.8
+                "color": "semi-dark-yellow",
+                "value": 0.9
               },
               {
-                "color": "green",
-                "value": 0.9
+                "color": "semi-dark-orange",
+                "value": 0.95
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 0.99
               }
             ]
           },
@@ -482,7 +486,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(function_calls_duration_bucket{objective_name=\"$latency_objective\", le=\"$latency_objective_latency_threshold\"}[$__range])) \n/ (sum(rate(function_calls_duration_count{objective_name=\"$latency_objective\"}[$__range])) > 0)",
+          "expr": "(\n  sum(\n    rate(\n      function_calls_duration_bucket{\n        objective_name=\"$latency_objective\", \n        le=\"$latency_objective_latency_threshold\"\n      }[$__range]\n    )\n  ) or on() vector(0)\n) / (\n  sum(\n    rate(\n      function_calls_duration_count{\n        objective_name=\"$latency_objective\"\n      }[$__range]\n    )\n  ) > 0\n)",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -544,10 +548,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -583,7 +583,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(1 - (sum by (function, module) (rate(function_calls_duration_bucket{objective_name=\"$latency_objective\", le=\"$latency_objective_latency_threshold\"}[$__rate_interval]))\n/ (sum by (function, module) (rate(function_calls_duration_count{objective_name=\"$latency_objective\"}[$__rate_interval])) > 0))) > 0",
+          "expr": "(\n  1 - (\n    sum by (function, module) (\n      rate(\n        function_calls_duration_bucket{\n          objective_name=\"$latency_objective\", \n          le=\"$latency_objective_latency_threshold\"\n        }[$__rate_interval]\n      )\n    ) / (\n      sum by (function, module) (\n        rate(\n          function_calls_duration_count{\n            objective_name=\"$latency_objective\"\n          }[$__rate_interval]\n        )\n      ) > 0\n    )\n  )\n) > 0",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -606,7 +606,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(function_calls_count, objective_name)",
+        "definition": "label_values({__name__=~\"function_calls_count(:?_total)?\"}, objective_name)",
         "hide": 2,
         "includeAll": false,
         "label": "",
@@ -614,7 +614,7 @@
         "name": "success_rate_objective",
         "options": [],
         "query": {
-          "query": "label_values(function_calls_count, objective_name)",
+          "query": "label_values({__name__=~\"function_calls_count(:?_total)?\"}, objective_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -651,14 +651,14 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(function_calls_count{objective_name=\"$success_rate_objective\"}, objective_percentile)",
+        "definition": "label_values({__name__=~\"function_calls_count(:?_total)?\", objective_name=\"$success_rate_objective\"}, objective_percentile)",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "success_rate_objective_percentile",
         "options": [],
         "query": {
-          "query": "label_values(function_calls_count{objective_name=\"$success_rate_objective\"}, objective_percentile)",
+          "query": "label_values({__name__=~\"function_calls_count(:?_total)?\", objective_name=\"$success_rate_objective\"}, objective_percentile)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -690,7 +690,11 @@
         "type": "query"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "0.25",
+          "value": "0.25"
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
