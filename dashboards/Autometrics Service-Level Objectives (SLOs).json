@@ -319,7 +319,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(\n  sum by (function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        objective_name=\"$success_rate_objective\", \n        result=\"error\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (build_info or on (instance, job) up)\n  ) > 0\n) / (\n  sum by (function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        objective_name=\"$success_rate_objective\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (build_info or on (instance, job) up)\n  ) > 0\n)",
+          "expr": "(\n  sum by (function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        objective_name=\"$success_rate_objective\", \n        result=\"error\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n  ) > 0\n) / (\n  sum by (function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        objective_name=\"$success_rate_objective\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n  ) > 0\n)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -583,7 +583,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(\n  1 - (\n    sum by (function, module, version, commit) (\n      rate(\n        function_calls_duration_bucket{\n          objective_name=\"$latency_objective\", \n          le=\"$latency_objective_latency_threshold\"\n        }[$__rate_interval]\n      )\n      * on(instance, job) group_left(version, commit) (build_info or on (instance, job) up)\n    ) / (\n      sum by (function, module, version, commit) (\n        rate(\n          function_calls_duration_count{\n            objective_name=\"$latency_objective\"\n          }[$__rate_interval]\n        )\n        * on(instance, job) group_left(version, commit) (build_info or on (instance, job) up)\n      ) > 0\n    )\n  )\n) > 0",
+          "expr": "(\n  1 - (\n    sum by (function, module, version, commit) (\n      rate(\n        function_calls_duration_bucket{\n          objective_name=\"$latency_objective\", \n          le=\"$latency_objective_latency_threshold\"\n        }[$__rate_interval]\n      )\n      * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n    ) / (\n      sum by (function, module, version, commit) (\n        rate(\n          function_calls_duration_count{\n            objective_name=\"$latency_objective\"\n          }[$__rate_interval]\n        )\n        * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n      ) > 0\n    )\n  )\n) > 0",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
