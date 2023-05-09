@@ -22,7 +22,7 @@ Objectives can relate to functions' success rate and/or latencies.
 
 Success rate objectives add the [`objective.name`](#objectivename) and [`objective.percentile`](#objectivepercentile) labels to the [`function.calls.count`](#functioncallscount) metric.
 
-Latency objectives add the [`objective.name`](#objectivename), [`objective.percentile`](#objectivepercentile), and [`objective.latency_threshold`](#objectivelatency_threshold) labels ot the [`function.calls.duration`](#functioncallsduration) metric.
+Latency objectives add the [`objective.name`](#objectivename), [`objective.percentile`](#objectivepercentile), and [`objective.latency_threshold`](#objectivelatency_threshold) labels to the [`function.calls.duration`](#functioncallsduration) metric.
 
 ## Metric Collection Libraries
 
