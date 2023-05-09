@@ -138,7 +138,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": {
@@ -278,6 +278,7 @@
             }
           },
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -319,7 +320,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(\n  sum by (function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        objective_name=\"$success_rate_objective\", \n        result=\"error\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n  ) > 0\n) / (\n  sum by (function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        objective_name=\"$success_rate_objective\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n  ) > 0\n)",
+          "expr": "(\n  sum by (function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        objective_name=\"$success_rate_objective\", \n        result=\"error\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n  ) >= 0\n) / (\n  sum by (function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        objective_name=\"$success_rate_objective\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n  ) > 0\n)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -542,6 +543,7 @@
             }
           },
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -725,6 +727,6 @@
   "timezone": "",
   "title": "Autometrics Service-Level Objectives (SLOs)",
   "uid": "autometrics-objectives",
-  "version": 6,
+  "version": 7,
   "weekStart": ""
 }
