@@ -44,7 +44,7 @@ When the metrics are exported to Prometheus, all dot (`.`) separators are replac
 >
 > **Additional Labels** (if a success rate [objective](#service-level-objectives-slos) is attached to the given function): [`objective.name`](#objectivename) and [`objective.percentile`](#objectivepercentile)
 
-**Note:** there is an [open discussion](https://github.com/orgs/autometrics-dev/discussions/4#discussioncomment-5839198) about changing this metric name to `function.calls.total`.
+**Note:** there is an [open discussion](https://github.com/orgs/autometrics-dev/discussions/4#discussioncomment-5839198) about changing this metric name to `function.calls` or `function.calls.total`.
 
 This metric is a 64-bit monotonic counter that tracks the number of times a given function was invoked.
 
