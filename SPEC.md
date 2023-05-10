@@ -88,6 +88,8 @@ The Git branch of the user's project. If this information is not available, this
 
 ### `caller`
 
+**Note:** there is an [ongoing discussion](https://github.com/orgs/autometrics-dev/discussions/33) about whether this should be replaced with multiple labels such as `caller_function` and `caller_module`.
+
 The name of the `function` that invoked the given function. If the caller is not known, this label MAY be absent or empty (`""`).
 
 This SHOULD refer to Autometrics-instrumented functions. Therefore, if Function A calls Function B, which calls Function C and only Functions A and C are instrumented but not B, the `caller` of Function C would be Function A.
