@@ -104,6 +104,8 @@ The name of the function or method, exactly as it appears in the source code.
 
 The fully-qualified module or file path of the `function`. The combination of the `function` and `module` labels MUST be sufficient to uniquely identify the function within the project's source code. The exact contents of this label value are assumed to be language-specific.
 
+**Note:** There is an [ongoing discussion](https://github.com/orgs/autometrics-dev/discussions/28) about whether the class should be added to the `module` label or if there should be a separate `class` label.
+
 ### `objective.name`
 
 If a function has an [SLO](#service-level-objectives-slos) attached, this label contains the user-specified name of the objective. If there is no SLO attached, this label MAY be absent or empty (`""`).
