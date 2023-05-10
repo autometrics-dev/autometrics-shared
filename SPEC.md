@@ -14,6 +14,8 @@ Libraries MAY need an initialization function.
 
 Libraries MAY expose additional functionality for exporting metrics.
 
+**Note:** there is an [open discussion](https://github.com/orgs/autometrics-dev/discussions/7) about whether libraries should export metrics on a default port and path.
+
 ### Service-Level Objectives (SLOs)
 
 Libraries SHOULD expose functionality to create objectives within the source code. Objectives can be "attached" to functions by passing the objective to the Autometrics decorator, macro, etc for one or more functions.
