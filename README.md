@@ -4,6 +4,8 @@
 
 This repo contains resources shared between all of the [Autometrics](https://github.com/autometrics-dev) implementations.
 
+## [Autometrics Specification](./SPEC.md)
+
 ## Dashboards
 
 You can find the Grafana dashboard JSON files in the [dashboards](./dashboards/) directory.
