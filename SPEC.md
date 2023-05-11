@@ -12,9 +12,9 @@ Libraries MAY enable the decorator, macro, etc to apply to an entire class defin
 
 Libraries MAY need an initialization function.
 
-Libraries MAY expose additional functionality for exporting metrics.
+Libraries MAY expose additional functionality for exporting metrics to Prometheus and/or other metrics collection servers. This MAY include serializing the metrics to the Prometheus text format, OpenMetrics export format, the OpenTelemetry Protocol and/or exposing the metrics on a specific port and HTTP path to be scraped.
 
-**Note:** there is an [open discussion](https://github.com/orgs/autometrics-dev/discussions/7) about whether libraries should export metrics on a default port and path.
+**Note:** there is an [open discussion](https://github.com/orgs/autometrics-dev/discussions/7) about whether libraries should export metrics on a default port and path. There is another [open discussion](https://github.com/orgs/autometrics-dev/discussions/34) about support for pushing metrics to a collector.
 
 ### Service-Level Objectives (SLOs)
 
