@@ -1,8 +1,29 @@
-# Autometrics Specification
+# Autometrics Specification <!-- omit in toc -->
 
 This is a work in progress specification for Autometrics.
 
 It aims to describe the full feature set of the Autometrics libraries, but it may have important details missing. We will attempt to update this document to describe the expectations across all of the language implementations.
+
+- [API](#api)
+  - [Service-Level Objectives (SLOs)](#service-level-objectives-slos)
+- [Metric Collection Libraries](#metric-collection-libraries)
+- [Metrics](#metrics)
+  - [`function.calls.count`](#functioncallscount)
+  - [`function.calls.duration`](#functioncallsduration)
+  - [`build_info`](#build_info)
+  - [`function.calls.concurrent`](#functioncallsconcurrent)
+- [Labels](#labels)
+  - [`branch`](#branch)
+  - [`caller`](#caller)
+  - [`commit`](#commit)
+  - [`function`](#function)
+  - [`module`](#module)
+  - [`objective.name`](#objectivename)
+  - [`objective.percentile`](#objectivepercentile)
+  - [`objective.latency_threshold`](#objectivelatency_threshold)
+  - [`result`](#result)
+  - [`version`](#version)
+
 
 ## API
 
