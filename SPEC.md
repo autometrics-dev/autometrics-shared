@@ -1,8 +1,30 @@
-# Autometrics Specification
+# Autometrics Specification <!-- omit in toc -->
 
 This is a work in progress specification for Autometrics.
 
 It aims to describe the full feature set of the Autometrics libraries, but it may have important details missing. We will attempt to update this document to describe the expectations across all of the language implementations.
+
+- [API](#api)
+  - [Service-Level Objectives (SLOs)](#service-level-objectives-slos)
+- [Metric Collection Libraries](#metric-collection-libraries)
+  - [Exemplars (Optional)](#exemplars-optional)
+- [Metrics](#metrics)
+  - [`function.calls.count`](#functioncallscount)
+  - [`function.calls.duration`](#functioncallsduration)
+  - [`build_info`](#build_info)
+  - [`function.calls.concurrent`](#functioncallsconcurrent)
+- [Labels](#labels)
+  - [`branch`](#branch)
+  - [`caller`](#caller)
+  - [`commit`](#commit)
+  - [`function`](#function)
+  - [`module`](#module)
+  - [`objective.name`](#objectivename)
+  - [`objective.percentile`](#objectivepercentile)
+  - [`objective.latency_threshold`](#objectivelatency_threshold)
+  - [`result`](#result)
+  - [`version`](#version)
+
 
 ## API
 
@@ -31,6 +53,14 @@ Latency objectives add the [`objective.name`](#objectivename), [`objective.perce
 Libraries MUST support producing metrics using an OpenTelemetry library. Libraries MAY also support Prometheus client libraries and allow users to configure which one should be used to produce metrics.
 
 Libraries MUST support exporting metrics to Prometheus, or provide documentation for how users can export the metrics from the OpenTelemetry format to the Prometheus exposition format.
+
+### Exemplars (Optional)
+
+Autometrics libraries MAY support attaching exemplars to the metrics generated if the underlying metrics library or libraries they use support them. See [Grafana's explainer](https://grafana.com/docs/grafana/latest/fundamentals/exemplars/), the [OpenMetrics Spec](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#exemplars), and the [OpenTelemetry Spec](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/data-model.md#exemplars) for more details about exemplars.
+
+Libraries that support exemplars SHOULD integrate with popular tracing libraries and/or the OpenTelemetry library to extract exemplar fields from the context or span a given function is called within.
+
+Libraries SHOULD support extracting the `trace_id` field and attaching it as an exemplar label or attribute. Libraries MAY support extracting other fields automatically or provide the user functionality to customize which fields are used.
 
 ## Metrics
 
