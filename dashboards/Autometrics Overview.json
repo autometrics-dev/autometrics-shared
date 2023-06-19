@@ -175,7 +175,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum by (function, module, version, commit) (\n  rate(\n    {\n      __name__=~\"function_calls_count(?:_total)?\", \n      function=~\"${functions_top_request_rate}\"\n    }[5m]\n  )\n  * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n) > 0",
+          "expr": "sum by (function, module, version, commit) (\n  rate(\n    {\n      __name__=~\"function_calls_count(?:_total)?\", \n      function=~\"${functions_top_request_rate}\"\n    }[5m]\n  )\n  * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n) > 0",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -278,7 +278,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(\n  sum by(function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        result=\"error\", \n        function=~\"${functions_top_error_rate}\"\n      }[5m]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n  ) > 0\n) / (\n  sum by(function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        function=~\"${functions_top_error_rate}\"\n      }[5m]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[1s]) or on (instance, job) up)\n  ) > 0\n)",
+          "expr": "(\n  sum by(function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        result=\"error\", \n        function=~\"${functions_top_error_rate}\"\n      }[5m]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n  ) > 0\n) / (\n  sum by(function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\", \n        function=~\"${functions_top_error_rate}\"\n      }[5m]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n  ) > 0\n)",
           "interval": "",
           "legendFormat": "",
           "range": true,
