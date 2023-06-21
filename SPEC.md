@@ -9,7 +9,7 @@ It aims to describe the full feature set of the Autometrics libraries, but it ma
 - [Metric Collection Libraries](#metric-collection-libraries)
   - [Exemplars (Optional)](#exemplars-optional)
 - [Metrics](#metrics)
-  - [`function.calls.count`](#functioncallscount)
+  - [`function.calls`](#functioncalls)
   - [`function.calls.duration`](#functioncallsduration)
   - [`build_info`](#build_info)
   - [`function.calls.concurrent`](#functioncallsconcurrent)
@@ -44,7 +44,7 @@ Libraries SHOULD expose functionality to create objectives within the source cod
 
 Objectives can relate to functions' success rate and/or latencies.
 
-Success rate objectives add the [`objective.name`](#objectivename) and [`objective.percentile`](#objectivepercentile) labels to the [`function.calls.count`](#functioncallscount) metric.
+Success rate objectives add the [`objective.name`](#objectivename) and [`objective.percentile`](#objectivepercentile) labels to the [`function.calls`](#functioncalls) metric.
 
 Latency objectives add the [`objective.name`](#objectivename), [`objective.percentile`](#objectivepercentile), and [`objective.latency_threshold`](#objectivelatency_threshold) labels to the [`function.calls.duration`](#functioncallsduration) metric.
 
@@ -66,32 +66,40 @@ Libraries SHOULD support extracting the `trace_id` field and attaching it as an 
 
 Autometrics uses the [OpenTelemetry Metric Semantic Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/README.md) for naming metrics, including using `.`'s as separators.
 
-When the metrics are exported to Prometheus, all dot (`.`) separators are replaced by underscores (`_`).
+When the metrics are exported to Prometheus, all dot (`.`) separators are replaced by underscores (`_`). Suffixes are appended where required by Prometheus/OpenMetrics.
 
-### `function.calls.count`
+### `function.calls`
 
+> **Prometheus Name:** `function_calls_total`
+>
 > **Required Labels:** [`function`](#function), [`module`](#module), [`result`](#result), [`caller`](#caller)
 >
 > **Additional Labels** (if a success rate [objective](#service-level-objectives-slos) is attached to the given function): [`objective.name`](#objectivename) and [`objective.percentile`](#objectivepercentile)
 
-**Note:** there is an [open discussion](https://github.com/orgs/autometrics-dev/discussions/4#discussioncomment-5839198) about changing this metric name to `function.calls` or `function.calls.total`.
-
 This metric is a 64-bit monotonic counter that tracks the number of times a given function was invoked.
+
+When this metric is exported to Prometheus, its name SHOULD be `function_calls_total`, because Prometheus/OpenMetrics specifies that counters SHOULD have the `_total` suffix. Note that library authors may need to append the suffix because not all Prometheus client libraries or exporters will do so.
 
 ### `function.calls.duration`
 
+> **Prometheus Name:** `function_calls_duration_seconds`
+>
 > **Required Labels:** [`function`](#function), [`module`](#module)
 >
 > **Additional labels** (if a latency [objective](#service-level-objectives-slos) is attached to the given function): [`objective.name`](#objectivename), [`objective.percentile`](#objectivepercentile), [`objective.latency_threshold`](#objectivelatency_threshold)
 
 This is a 64-bit floating point histogram that tracks the duration or latency of function calls.
 
-It MUST track the duration in seconds (**not** milliseconds).
+It MUST track the duration in seconds (**not** milliseconds). Libraries using OpenTelemetry SHOULD set the units in the resource metadata.
 
 Libraries SHOULD support the [default OpenTelemetry histogram buckets](https://opentelemetry.io/docs/reference/specification/metrics/sdk/#histogram-aggregations) as label values. Libraries MAY allow users to specify custom histogram buckets.
 
+When this metric is exported to Prometheus, its name SHOULD be `function_calls_duration_seconds`, because Prometheus/OpenMetrics specifies that metrics SHOULD include their units. Note that library authors may need to append the unit suffix because not all Prometheus client libraries or exporters will do so.
+
 ### `build_info`
 
+> **Prometheus Name:** `build_info`
+>
 > **Required Labels:** [`version`](#version), [`commit`](#commit), [`branch`](#branch)
 
 This is a gauge or up/down counter.
@@ -100,6 +108,8 @@ It MUST always have the value of `1.0`.
 
 ### `function.calls.concurrent`
 
+> **Prometheus Name:** `function_calls_concurrent`
+>
 > **Required Labels:** [`function`](#function), [`module`](#module)
 
 This metric is optional. Libraries MAY provide an option to the user for enabling this on a per-function basis.
