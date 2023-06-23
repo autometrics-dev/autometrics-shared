@@ -23,6 +23,7 @@ It aims to describe the full feature set of the Autometrics libraries, but it ma
   - [`objective.percentile`](#objectivepercentile)
   - [`objective.latency_threshold`](#objectivelatency_threshold)
   - [`result`](#result)
+  - [`service.name`](#servicename)
   - [`version`](#version)
 
 
@@ -70,7 +71,7 @@ When the metrics are exported to Prometheus, all dot (`.`) separators are replac
 
 ### `function.calls.count`
 
-> **Required Labels:** [`function`](#function), [`module`](#module), [`result`](#result), [`caller`](#caller)
+> **Required Labels:** [`function`](#function), [`module`](#module), [`service.name`](#servicename), [`result`](#result), [`caller`](#caller)
 >
 > **Additional Labels** (if a success rate [objective](#service-level-objectives-slos) is attached to the given function): [`objective.name`](#objectivename) and [`objective.percentile`](#objectivepercentile)
 
@@ -80,7 +81,7 @@ This metric is a 64-bit monotonic counter that tracks the number of times a give
 
 ### `function.calls.duration`
 
-> **Required Labels:** [`function`](#function), [`module`](#module)
+> **Required Labels:** [`function`](#function), [`module`](#module), [`service.name`](#servicename)
 >
 > **Additional labels** (if a latency [objective](#service-level-objectives-slos) is attached to the given function): [`objective.name`](#objectivename), [`objective.percentile`](#objectivepercentile), [`objective.latency_threshold`](#objectivelatency_threshold)
 
@@ -92,7 +93,7 @@ Libraries SHOULD support the [default OpenTelemetry histogram buckets](https://o
 
 ### `build_info`
 
-> **Required Labels:** [`version`](#version), [`commit`](#commit), [`branch`](#branch)
+> **Required Labels:** [`version`](#version), [`commit`](#commit), [`branch`](#branch), [`service.name`](#servicename)
 
 This is a gauge or up/down counter.
 
@@ -100,13 +101,15 @@ It MUST always have the value of `1.0`.
 
 ### `function.calls.concurrent`
 
-> **Required Labels:** [`function`](#function), [`module`](#module)
+> **Required Labels:** [`function`](#function), [`module`](#module), [`service.name`](#servicename)
 
 This metric is optional. Libraries MAY provide an option to the user for enabling this on a per-function basis.
 
 This is a gauge or "up/down counter" used for tracking concurrent calls to the specific function. When the function is initially called, the gauge is incremented by 1 and when it finishes, the value is decremented by 1.
 
 ## Labels
+
+When the metrics are exported to Prometheus, all dot (`.`) separators in the label keys are replaced by underscores (`_`).
 
 Label values MAY contain any Unicode characters.
 
@@ -169,6 +172,14 @@ Whether the function executed successfully or errored. An error MAY either mean 
 The value of this label MUST either be `"ok"` or `"error"`.
 
 Libraries MAY offer users the ability to override the default behavior for determining whether the `result` label should be `"ok"` or `"error"`, for example to allow users to treat client-side errors as `"ok"`.
+
+### `service.name`
+
+The logical name of a service. This matches the [OpenTelemetry Service specification](https://github.com/open-telemetry/semantic-conventions/tree/main/specification/resource/semantic_conventions#service).
+
+All metrics produced by a library from a given instance SHOULD use a single `service.name`. All instances of a horizontally scaled service SHOULD also use the same `service.name`.
+
+Libraries SHOULD support setting the `service.name` using environment variables (`AUTOMETRICS_SERVICE_NAME` and `OTEL_SERVICE_NAME`, with the first taking precedence if both are set). Libraries MAY also support configuring this value in an initialization function.
 
 ### `version`
 
