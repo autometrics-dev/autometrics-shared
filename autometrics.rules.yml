@@ -8,9 +8,9 @@ groups:
   rules:
   - record: slo:sli_error:ratio_rate5m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90",result="error"}[5m])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90",result="error"}[5m])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90"}[5m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90"}[5m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-90
       sloth_service: autometrics
@@ -18,9 +18,9 @@ groups:
       sloth_window: 5m
   - record: slo:sli_error:ratio_rate30m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90",result="error"}[30m])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90",result="error"}[30m])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90"}[30m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90"}[30m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-90
       sloth_service: autometrics
@@ -28,9 +28,9 @@ groups:
       sloth_window: 30m
   - record: slo:sli_error:ratio_rate1h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90",result="error"}[1h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90",result="error"}[1h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90"}[1h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90"}[1h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-90
       sloth_service: autometrics
@@ -38,9 +38,9 @@ groups:
       sloth_window: 1h
   - record: slo:sli_error:ratio_rate2h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90",result="error"}[2h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90",result="error"}[2h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90"}[2h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90"}[2h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-90
       sloth_service: autometrics
@@ -48,9 +48,9 @@ groups:
       sloth_window: 2h
   - record: slo:sli_error:ratio_rate6h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90",result="error"}[6h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90",result="error"}[6h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90"}[6h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90"}[6h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-90
       sloth_service: autometrics
@@ -58,9 +58,9 @@ groups:
       sloth_window: 6h
   - record: slo:sli_error:ratio_rate1d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90",result="error"}[1d])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90",result="error"}[1d])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90"}[1d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90"}[1d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-90
       sloth_service: autometrics
@@ -68,9 +68,9 @@ groups:
       sloth_window: 1d
   - record: slo:sli_error:ratio_rate3d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90",result="error"}[3d])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90",result="error"}[3d])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="90"}[3d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="90"}[3d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-90
       sloth_service: autometrics
@@ -161,7 +161,8 @@ groups:
       severity: page
       sloth_severity: page
     annotations:
-      summary: 'High error rate on SLO: {{$labels.objective_name}}'
+      summary: High error rate on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (page) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
   - alert: High Error Rate SLO - 90%
@@ -182,16 +183,17 @@ groups:
       severity: ticket
       sloth_severity: ticket
     annotations:
-      summary: 'High error rate on SLO: {{$labels.objective_name}}'
+      summary: High error rate on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (ticket) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
 - name: sloth-slo-sli-recordings-autometrics-success-rate-95
   rules:
   - record: slo:sli_error:ratio_rate5m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95",result="error"}[5m])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95",result="error"}[5m])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95"}[5m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95"}[5m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-95
       sloth_service: autometrics
@@ -199,9 +201,9 @@ groups:
       sloth_window: 5m
   - record: slo:sli_error:ratio_rate30m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95",result="error"}[30m])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95",result="error"}[30m])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95"}[30m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95"}[30m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-95
       sloth_service: autometrics
@@ -209,9 +211,9 @@ groups:
       sloth_window: 30m
   - record: slo:sli_error:ratio_rate1h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95",result="error"}[1h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95",result="error"}[1h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95"}[1h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95"}[1h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-95
       sloth_service: autometrics
@@ -219,9 +221,9 @@ groups:
       sloth_window: 1h
   - record: slo:sli_error:ratio_rate2h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95",result="error"}[2h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95",result="error"}[2h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95"}[2h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95"}[2h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-95
       sloth_service: autometrics
@@ -229,9 +231,9 @@ groups:
       sloth_window: 2h
   - record: slo:sli_error:ratio_rate6h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95",result="error"}[6h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95",result="error"}[6h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95"}[6h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95"}[6h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-95
       sloth_service: autometrics
@@ -239,9 +241,9 @@ groups:
       sloth_window: 6h
   - record: slo:sli_error:ratio_rate1d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95",result="error"}[1d])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95",result="error"}[1d])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95"}[1d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95"}[1d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-95
       sloth_service: autometrics
@@ -249,9 +251,9 @@ groups:
       sloth_window: 1d
   - record: slo:sli_error:ratio_rate3d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95",result="error"}[3d])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95",result="error"}[3d])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="95"}[3d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="95"}[3d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-95
       sloth_service: autometrics
@@ -342,7 +344,8 @@ groups:
       severity: page
       sloth_severity: page
     annotations:
-      summary: 'High error rate on SLO: {{$labels.objective_name}}'
+      summary: High error rate on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (page) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
   - alert: High Error Rate SLO - 95%
@@ -363,16 +366,17 @@ groups:
       severity: ticket
       sloth_severity: ticket
     annotations:
-      summary: 'High error rate on SLO: {{$labels.objective_name}}'
+      summary: High error rate on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (ticket) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
 - name: sloth-slo-sli-recordings-autometrics-success-rate-99
   rules:
   - record: slo:sli_error:ratio_rate5m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99",result="error"}[5m])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99",result="error"}[5m])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99"}[5m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99"}[5m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99
       sloth_service: autometrics
@@ -380,9 +384,9 @@ groups:
       sloth_window: 5m
   - record: slo:sli_error:ratio_rate30m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99",result="error"}[30m])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99",result="error"}[30m])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99"}[30m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99"}[30m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99
       sloth_service: autometrics
@@ -390,9 +394,9 @@ groups:
       sloth_window: 30m
   - record: slo:sli_error:ratio_rate1h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99",result="error"}[1h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99",result="error"}[1h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99"}[1h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99"}[1h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99
       sloth_service: autometrics
@@ -400,9 +404,9 @@ groups:
       sloth_window: 1h
   - record: slo:sli_error:ratio_rate2h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99",result="error"}[2h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99",result="error"}[2h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99"}[2h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99"}[2h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99
       sloth_service: autometrics
@@ -410,9 +414,9 @@ groups:
       sloth_window: 2h
   - record: slo:sli_error:ratio_rate6h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99",result="error"}[6h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99",result="error"}[6h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99"}[6h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99"}[6h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99
       sloth_service: autometrics
@@ -420,9 +424,9 @@ groups:
       sloth_window: 6h
   - record: slo:sli_error:ratio_rate1d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99",result="error"}[1d])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99",result="error"}[1d])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99"}[1d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99"}[1d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99
       sloth_service: autometrics
@@ -430,9 +434,9 @@ groups:
       sloth_window: 1d
   - record: slo:sli_error:ratio_rate3d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99",result="error"}[3d])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99",result="error"}[3d])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99"}[3d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99"}[3d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99
       sloth_service: autometrics
@@ -523,7 +527,8 @@ groups:
       severity: page
       sloth_severity: page
     annotations:
-      summary: 'High error rate on SLO: {{$labels.objective_name}}'
+      summary: High error rate on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (page) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
   - alert: High Error Rate SLO - 99%
@@ -544,16 +549,17 @@ groups:
       severity: ticket
       sloth_severity: ticket
     annotations:
-      summary: 'High error rate on SLO: {{$labels.objective_name}}'
+      summary: High error rate on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (ticket) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
 - name: sloth-slo-sli-recordings-autometrics-success-rate-99_9
   rules:
   - record: slo:sli_error:ratio_rate5m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9",result="error"}[5m])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9",result="error"}[5m])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9"}[5m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9"}[5m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99_9
       sloth_service: autometrics
@@ -561,9 +567,9 @@ groups:
       sloth_window: 5m
   - record: slo:sli_error:ratio_rate30m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9",result="error"}[30m])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9",result="error"}[30m])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9"}[30m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9"}[30m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99_9
       sloth_service: autometrics
@@ -571,9 +577,9 @@ groups:
       sloth_window: 30m
   - record: slo:sli_error:ratio_rate1h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9",result="error"}[1h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9",result="error"}[1h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9"}[1h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9"}[1h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99_9
       sloth_service: autometrics
@@ -581,9 +587,9 @@ groups:
       sloth_window: 1h
   - record: slo:sli_error:ratio_rate2h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9",result="error"}[2h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9",result="error"}[2h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9"}[2h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9"}[2h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99_9
       sloth_service: autometrics
@@ -591,9 +597,9 @@ groups:
       sloth_window: 2h
   - record: slo:sli_error:ratio_rate6h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9",result="error"}[6h])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9",result="error"}[6h])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9"}[6h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9"}[6h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99_9
       sloth_service: autometrics
@@ -601,9 +607,9 @@ groups:
       sloth_window: 6h
   - record: slo:sli_error:ratio_rate1d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9",result="error"}[1d])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9",result="error"}[1d])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9"}[1d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9"}[1d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99_9
       sloth_service: autometrics
@@ -611,9 +617,9 @@ groups:
       sloth_window: 1d
   - record: slo:sli_error:ratio_rate3d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9",result="error"}[3d])))
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9",result="error"}[3d])))
       /
-      (sum by (objective_name, objective_percentile) (rate({__name__=~"function_calls_count(?:_total)?",objective_percentile="99.9"}[3d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls(_count)?(_total)?",objective_percentile="99.9"}[3d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-success-rate-99_9
       sloth_service: autometrics
@@ -704,7 +710,8 @@ groups:
       severity: page
       sloth_severity: page
     annotations:
-      summary: 'High error rate on SLO: {{$labels.objective_name}}'
+      summary: High error rate on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (page) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
   - alert: High Error Rate SLO - 99.9%
@@ -725,21 +732,22 @@ groups:
       severity: ticket
       sloth_severity: ticket
     annotations:
-      summary: 'High error rate on SLO: {{$labels.objective_name}}'
+      summary: High error rate on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (ticket) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
 - name: sloth-slo-sli-recordings-autometrics-latency-90
   rules:
   - record: slo:sli_error:ratio_rate5m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[5m])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[5m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="90"}[5m])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[5m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[5m]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[5m]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[5m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="90"}[5m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-90
       sloth_service: autometrics
@@ -747,14 +755,14 @@ groups:
       sloth_window: 5m
   - record: slo:sli_error:ratio_rate30m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[30m])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[30m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="90"}[30m])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[30m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[30m]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[30m]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[30m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="90"}[30m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-90
       sloth_service: autometrics
@@ -762,14 +770,14 @@ groups:
       sloth_window: 30m
   - record: slo:sli_error:ratio_rate1h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[1h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[1h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="90"}[1h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[1h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[1h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[1h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[1h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="90"}[1h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-90
       sloth_service: autometrics
@@ -777,14 +785,14 @@ groups:
       sloth_window: 1h
   - record: slo:sli_error:ratio_rate2h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[2h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[2h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="90"}[2h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[2h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[2h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[2h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[2h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="90"}[2h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-90
       sloth_service: autometrics
@@ -792,14 +800,14 @@ groups:
       sloth_window: 2h
   - record: slo:sli_error:ratio_rate6h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[6h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[6h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="90"}[6h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[6h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[6h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[6h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[6h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="90"}[6h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-90
       sloth_service: autometrics
@@ -807,14 +815,14 @@ groups:
       sloth_window: 6h
   - record: slo:sli_error:ratio_rate1d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[1d])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[1d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="90"}[1d])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[1d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[1d]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[1d]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[1d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="90"}[1d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-90
       sloth_service: autometrics
@@ -822,14 +830,14 @@ groups:
       sloth_window: 1d
   - record: slo:sli_error:ratio_rate3d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[3d])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[3d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="90"}[3d])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[3d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="90"}[3d]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="90"}[3d]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="90"}[3d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="90"}[3d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-90
       sloth_service: autometrics
@@ -920,7 +928,8 @@ groups:
       severity: page
       sloth_severity: page
     annotations:
-      summary: 'High latency on SLO: {{$labels.objective_name}}'
+      summary: High latency on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (page) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
   - alert: High Latency SLO - 90%
@@ -941,21 +950,22 @@ groups:
       severity: ticket
       sloth_severity: ticket
     annotations:
-      summary: 'High latency on SLO: {{$labels.objective_name}}'
+      summary: High latency on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (ticket) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
 - name: sloth-slo-sli-recordings-autometrics-latency-95
   rules:
   - record: slo:sli_error:ratio_rate5m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[5m])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[5m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="95"}[5m])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[5m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[5m]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[5m]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[5m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="95"}[5m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-95
       sloth_service: autometrics
@@ -963,14 +973,14 @@ groups:
       sloth_window: 5m
   - record: slo:sli_error:ratio_rate30m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[30m])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[30m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="95"}[30m])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[30m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[30m]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[30m]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[30m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="95"}[30m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-95
       sloth_service: autometrics
@@ -978,14 +988,14 @@ groups:
       sloth_window: 30m
   - record: slo:sli_error:ratio_rate1h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[1h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[1h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="95"}[1h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[1h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[1h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[1h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[1h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="95"}[1h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-95
       sloth_service: autometrics
@@ -993,14 +1003,14 @@ groups:
       sloth_window: 1h
   - record: slo:sli_error:ratio_rate2h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[2h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[2h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="95"}[2h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[2h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[2h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[2h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[2h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="95"}[2h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-95
       sloth_service: autometrics
@@ -1008,14 +1018,14 @@ groups:
       sloth_window: 2h
   - record: slo:sli_error:ratio_rate6h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[6h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[6h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="95"}[6h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[6h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[6h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[6h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[6h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="95"}[6h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-95
       sloth_service: autometrics
@@ -1023,14 +1033,14 @@ groups:
       sloth_window: 6h
   - record: slo:sli_error:ratio_rate1d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[1d])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[1d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="95"}[1d])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[1d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[1d]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[1d]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[1d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="95"}[1d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-95
       sloth_service: autometrics
@@ -1038,14 +1048,14 @@ groups:
       sloth_window: 1d
   - record: slo:sli_error:ratio_rate3d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[3d])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[3d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="95"}[3d])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[3d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="95"}[3d]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="95"}[3d]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="95"}[3d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="95"}[3d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-95
       sloth_service: autometrics
@@ -1136,7 +1146,8 @@ groups:
       severity: page
       sloth_severity: page
     annotations:
-      summary: 'High latency on SLO: {{$labels.objective_name}}'
+      summary: High latency on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (page) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
   - alert: High Latency SLO - 95%
@@ -1157,21 +1168,22 @@ groups:
       severity: ticket
       sloth_severity: ticket
     annotations:
-      summary: 'High latency on SLO: {{$labels.objective_name}}'
+      summary: High latency on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (ticket) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
 - name: sloth-slo-sli-recordings-autometrics-latency-99
   rules:
   - record: slo:sli_error:ratio_rate5m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[5m])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[5m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99"}[5m])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[5m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[5m]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[5m]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[5m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99"}[5m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99
       sloth_service: autometrics
@@ -1179,14 +1191,14 @@ groups:
       sloth_window: 5m
   - record: slo:sli_error:ratio_rate30m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[30m])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[30m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99"}[30m])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[30m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[30m]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[30m]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[30m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99"}[30m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99
       sloth_service: autometrics
@@ -1194,14 +1206,14 @@ groups:
       sloth_window: 30m
   - record: slo:sli_error:ratio_rate1h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[1h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[1h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99"}[1h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[1h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[1h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[1h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[1h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99"}[1h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99
       sloth_service: autometrics
@@ -1209,14 +1221,14 @@ groups:
       sloth_window: 1h
   - record: slo:sli_error:ratio_rate2h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[2h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[2h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99"}[2h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[2h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[2h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[2h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[2h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99"}[2h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99
       sloth_service: autometrics
@@ -1224,14 +1236,14 @@ groups:
       sloth_window: 2h
   - record: slo:sli_error:ratio_rate6h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[6h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[6h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99"}[6h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[6h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[6h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[6h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[6h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99"}[6h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99
       sloth_service: autometrics
@@ -1239,14 +1251,14 @@ groups:
       sloth_window: 6h
   - record: slo:sli_error:ratio_rate1d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[1d])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[1d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99"}[1d])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[1d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[1d]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[1d]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[1d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99"}[1d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99
       sloth_service: autometrics
@@ -1254,14 +1266,14 @@ groups:
       sloth_window: 1d
   - record: slo:sli_error:ratio_rate3d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[3d])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[3d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99"}[3d])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[3d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99"}[3d]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99"}[3d]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99"}[3d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99"}[3d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99
       sloth_service: autometrics
@@ -1352,7 +1364,8 @@ groups:
       severity: page
       sloth_severity: page
     annotations:
-      summary: 'High latency on SLO: {{$labels.objective_name}}'
+      summary: High latency on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (page) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
   - alert: High Latency SLO - 99%
@@ -1373,21 +1386,22 @@ groups:
       severity: ticket
       sloth_severity: ticket
     annotations:
-      summary: 'High latency on SLO: {{$labels.objective_name}}'
+      summary: High latency on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (ticket) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
 - name: sloth-slo-sli-recordings-autometrics-latency-99_9
   rules:
   - record: slo:sli_error:ratio_rate5m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[5m])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[5m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99.9"}[5m])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[5m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[5m]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[5m]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[5m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99.9"}[5m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99_9
       sloth_service: autometrics
@@ -1395,14 +1409,14 @@ groups:
       sloth_window: 5m
   - record: slo:sli_error:ratio_rate30m
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[30m])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[30m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99.9"}[30m])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[30m]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[30m]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[30m]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[30m])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99.9"}[30m])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99_9
       sloth_service: autometrics
@@ -1410,14 +1424,14 @@ groups:
       sloth_window: 30m
   - record: slo:sli_error:ratio_rate1h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[1h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[1h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99.9"}[1h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[1h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[1h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[1h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[1h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99.9"}[1h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99_9
       sloth_service: autometrics
@@ -1425,14 +1439,14 @@ groups:
       sloth_window: 1h
   - record: slo:sli_error:ratio_rate2h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[2h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[2h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99.9"}[2h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[2h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[2h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[2h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[2h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99.9"}[2h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99_9
       sloth_service: autometrics
@@ -1440,14 +1454,14 @@ groups:
       sloth_window: 2h
   - record: slo:sli_error:ratio_rate6h
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[6h])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[6h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99.9"}[6h])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[6h]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[6h]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[6h]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[6h])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99.9"}[6h])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99_9
       sloth_service: autometrics
@@ -1455,14 +1469,14 @@ groups:
       sloth_window: 6h
   - record: slo:sli_error:ratio_rate1d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[1d])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[1d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99.9"}[1d])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[1d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[1d]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[1d]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[1d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99.9"}[1d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99_9
       sloth_service: autometrics
@@ -1470,14 +1484,14 @@ groups:
       sloth_window: 1d
   - record: slo:sli_error:ratio_rate3d
     expr: |
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[3d])) - (sum by (objective_name, objective_percentile) (
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[3d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
+      (sum by (objective_name, objective_percentile, service_name) (rate(function_calls_duration_count{objective_percentile="99.9"}[3d])) - (sum by (objective_name, objective_percentile, service_name) (
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[3d]), "autometrics_check_label_equality", "", "objective_latency_threshold")
         and
-        label_join(rate(function_calls_duration_bucket{objective_percentile="99.9"}[3d]), "autometrics_check_label_equality", "", "le")
+        label_join(rate({__name__=~"function_calls_duration(_seconds)?_bucket", objective_percentile="99.9"}[3d]), "autometrics_check_label_equality", "", "le")
       ))
       )
       /
-      (sum by (objective_name, objective_percentile) (rate(function_calls_duration_count{objective_percentile="99.9"}[3d])) >= 0.016666666666666666)
+      (sum by (objective_name, objective_percentile, service_name) (rate({__name__=~"function_calls_duration(_seconds)?_count", objective_percentile="99.9"}[3d])) >= 0.016666666666666666)
     labels:
       sloth_id: autometrics-latency-99_9
       sloth_service: autometrics
@@ -1568,7 +1582,8 @@ groups:
       severity: page
       sloth_severity: page
     annotations:
-      summary: 'High latency on SLO: {{$labels.objective_name}}'
+      summary: High latency on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (page) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
   - alert: High Latency SLO - 99.9%
@@ -1589,6 +1604,7 @@ groups:
       severity: ticket
       sloth_severity: ticket
     annotations:
-      summary: 'High latency on SLO: {{$labels.objective_name}}'
+      summary: High latency on the `{{$labels.objective_name}}` SLO for the `{{$labels.service_name}}`
+        service
       title: (ticket) {{$labels.sloth_service}} {{$labels.sloth_slo}} SLO error budget
         burn rate is too fast.
