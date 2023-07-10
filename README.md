@@ -33,7 +33,7 @@ rule_files:
 
 ### How it works
 
-This file sets up a number of recording and alerting rules that are dormant by default and are only enabled when the autometrics libraries product metrics with special labels: `function_calls_count{objective_name="", objective_percentile=""}` or `function_calls_duration_bucket{objective_name="", objective_latency_threshold="", objective_percentile=""}`.
+This file sets up a number of recording and alerting rules that are dormant by default and are only enabled when the autometrics libraries product metrics with special labels: `function_calls_total{objective_name="", objective_percentile=""}` or `function_calls_duration_seconds_bucket{objective_name="", objective_latency_threshold="", objective_percentile=""}`.
 
 To read more details about the label tricks we use to make these rules work across autometrics-instrumented projects, see [An adventure with SLOs, generic Prometheus alerting rules, and complex PromQL queries](https://fiberplane.com/blog/an-adventure-with-slos-generic-prometheus-alerting-rules-and-complex-promql-queries).
 
