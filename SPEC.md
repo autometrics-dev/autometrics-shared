@@ -15,8 +15,8 @@ It aims to describe the full feature set of the Autometrics libraries, but it ma
   - [`function.calls.concurrent`](#functioncallsconcurrent)
 - [Labels](#labels)
   - [`branch`](#branch)
-  - [`caller_function`](#caller_function)
-  - [`caller_module`](#caller_module)
+  - [`caller.function`](#callerfunction)
+  - [`caller.module`](#callermodule)
   - [`commit`](#commit)
   - [`function`](#function)
   - [`module`](#module)
@@ -122,7 +122,7 @@ See the [metrics](#metrics) for which labels are valid on each metric.
 
 The Git branch of the user's project. If this information is not available, this label MAY be absent or empty (`""`).
 
-### `caller_function`
+### `caller.function`
 
 The name of the `function` that invoked the given function. If the caller is not known, this label MAY be absent or empty (`""`).
 
@@ -130,9 +130,9 @@ This SHOULD refer to Autometrics-instrumented functions. Therefore, if Function 
 
 Libraries MAY make this label optional (on an opt-out basis) if collecting this information has a non-negligible performance overhead.
 
-### `caller_module`
+### `caller.module`
 
-The name of the `module` where the `caller_function` is found. If this information is not available, this label MAY be absent or empty (`""`).
+The name of the `module` where the `caller.function` is found. If this information is not available, this label MAY be absent or empty (`""`).
 
 Libraries MAY make this label optional (on an opt-out basis) if collecting this information has a non-negligible performance overhead.
 
