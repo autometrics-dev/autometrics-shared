@@ -15,7 +15,8 @@ It aims to describe the full feature set of the Autometrics libraries, but it ma
   - [`function.calls.concurrent`](#functioncallsconcurrent)
 - [Labels](#labels)
   - [`branch`](#branch)
-  - [`caller`](#caller)
+  - [`caller_function`](#caller_function)
+  - [`caller_module`](#caller_module)
   - [`commit`](#commit)
   - [`function`](#function)
   - [`module`](#module)
@@ -71,7 +72,7 @@ When the metrics are exported to Prometheus, all dot (`.`) separators are replac
 
 ### `function.calls.count`
 
-> **Required Labels:** [`function`](#function), [`module`](#module), [`service.name`](#servicename), [`result`](#result), [`caller`](#caller)
+> **Required Labels:** [`function`](#function), [`module`](#module), [`service.name`](#servicename), [`result`](#result), [`caller_function`](#caller_function), [`caller_module`](#caller_module)
 >
 > **Additional Labels** (if a success rate [objective](#service-level-objectives-slos) is attached to the given function): [`objective.name`](#objectivename) and [`objective.percentile`](#objectivepercentile)
 
@@ -121,13 +122,17 @@ See the [metrics](#metrics) for which labels are valid on each metric.
 
 The Git branch of the user's project. If this information is not available, this label MAY be absent or empty (`""`).
 
-### `caller`
-
-**Note:** there is an [ongoing discussion](https://github.com/orgs/autometrics-dev/discussions/33) about whether this should be replaced with multiple labels such as `caller_function` and `caller_module`.
+### `caller_function`
 
 The name of the `function` that invoked the given function. If the caller is not known, this label MAY be absent or empty (`""`).
 
 This SHOULD refer to Autometrics-instrumented functions. Therefore, if Function A calls Function B, which calls Function C and only Functions A and C are instrumented but not B, the `caller` of Function C would be Function A.
+
+Libraries MAY make this label optional (on an opt-out basis) if collecting this information has a non-negligible performance overhead.
+
+### `caller_module`
+
+The name of the `module` where the `caller_function` is found. If this information is not available, this label MAY be absent or empty (`""`).
 
 Libraries MAY make this label optional (on an opt-out basis) if collecting this information has a non-negligible performance overhead.
 
