@@ -79,6 +79,8 @@ When the metrics are exported to Prometheus, all dot (`.`) separators are replac
 
 This metric is a 64-bit monotonic counter that tracks the number of times a given function was invoked.
 
+If possible, libraries SHOULD start this counter off at zero (by incrementing the counter by 0) in order to expose the names of instrumented functions to visualization tools that use the metrics. Libraries SHOULD use as many of the labels as possible for the initial call to increment by zero, including those related to objectives and setting `result="ok"`.
+
 ### `function.calls.duration`
 
 > **Required Labels:** [`function`](#function), [`module`](#module), [`service.name`](#servicename)

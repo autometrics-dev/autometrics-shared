@@ -129,7 +129,10 @@
       "id": 4,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "max"],
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -230,7 +233,10 @@
       "id": 2,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "max"],
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -329,7 +335,10 @@
       "id": 5,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "max"],
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -349,7 +358,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "label_replace(\n  histogram_quantile(0.99, \n    sum by (le, function, module, service_name, commit, version) (\n      rate({__name__=~\"function_calls_duration(_seconds)?_bucket\", function=~\"$function\"}[$__rate_interval])\n      # Attach the `version` and `commit` labels from the `build_info` metric \n      * on (instance, job) group_left(version, commit) last_over_time(build_info[$__rate_interval])\n    )\n  ),\n  # Add the label {percentile_latency=\"99\"} to the time series\n  \"percentile_latency\", \"99\", \"\", \"\"\n)\nor\nlabel_replace(\n  histogram_quantile(0.95, \n    sum by (le, function, module, service_name, commit, version) (\n      rate({__name__=~\"function_calls_duration(_seconds)?_bucket\", function=~\"$function\"}[$__rate_interval])\n      # Attach the `version` and `commit` labels from the `build_info` metric \n      * on (instance, job) group_left(version, commit) last_over_time(build_info[$__rate_interval])\n    )\n  ),\n  # Add the label {percentile_latency=\"95\"} to the time series\n  \"percentile_latency\", \"95\", \"\", \"\"\n)",
+          "expr": "label_replace(\n  histogram_quantile(0.99, \n    sum by (le, function, module, service_name, commit, version) (\n      rate({__name__=~\"function_calls_duration(_seconds)?_bucket\", function=~\"$function\"}[$__rate_interval])\n      # Attach the `version` and `commit` labels from the `build_info` metric \n      * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n    )\n  ),\n  # Add the label {percentile_latency=\"99\"} to the time series\n  \"percentile_latency\", \"99\", \"\", \"\"\n)\nor\nlabel_replace(\n  histogram_quantile(0.95, \n    sum by (le, function, module, service_name, commit, version) (\n      rate({__name__=~\"function_calls_duration(_seconds)?_bucket\", function=~\"$function\"}[$__rate_interval])\n      # Attach the `version` and `commit` labels from the `build_info` metric \n      * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n    )\n  ),\n  # Add the label {percentile_latency=\"95\"} to the time series\n  \"percentile_latency\", \"95\", \"\", \"\"\n)",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -364,7 +373,9 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": ["autometrics"],
+  "tags": [
+    "autometrics"
+  ],
   "templating": {
     "list": [
       {
