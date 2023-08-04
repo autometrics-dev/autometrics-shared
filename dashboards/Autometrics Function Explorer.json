@@ -129,7 +129,10 @@
       "id": 4,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "max"],
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -149,7 +152,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum by (function, module, version, commit) (\n  rate(\n    {\n      __name__=~\"function_calls_count(?:_total)?\",\n      function=~\"${function}\"\n    }[$__rate_interval]\n  )\n  * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n)",
+          "expr": "sum by (function, module, service_name, version, commit) (\n  rate(\n    {\n      __name__=~\"function_calls(_count)?(_total)?\",\n      function=~\"${function}\"\n    }[$__rate_interval]\n  )\n  * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -230,7 +233,10 @@
       "id": 2,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "max"],
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -250,7 +256,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(\n  sum by(function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\",\n        result=\"error\", \n        function=~\"${function}\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n  )) / (\n  sum by(function, module, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls_count(?:_total)?\",\n        function=~\"${function}\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n  ))",
+          "expr": "(\n  sum by(function, module, service_name, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls(_count)?(_total)?\",\n        result=\"error\", \n        function=~\"${function}\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n  )) / (\n  sum by(function, module, service_name, version, commit) (\n    rate(\n      {\n        __name__=~\"function_calls(_count)?(_total)?\",\n        function=~\"${function}\"\n      }[$__rate_interval]\n    )\n    * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n  ))",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -329,7 +335,10 @@
       "id": 5,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "max"],
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -349,7 +358,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "label_replace(\n  histogram_quantile(0.99, \n    sum by (le, function, module, commit, version) (\n      rate(function_calls_duration_bucket{function=~\"$function\"}[$__rate_interval])\n      # Attach the `version` and `commit` labels from the `build_info` metric \n      * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n    )\n  ),\n  # Add the label {percentile_latency=\"99\"} to the time series\n  \"percentile_latency\", \"99\", \"\", \"\"\n)\nor\nlabel_replace(\n  histogram_quantile(0.95, \n    sum by (le, function, module, commit, version) (\n      rate(function_calls_duration_bucket{function=~\"$function\"}[$__rate_interval])\n      # Attach the `version` and `commit` labels from the `build_info` metric \n      * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n    )\n  ),\n  # Add the label {percentile_latency=\"95\"} to the time series\n  \"percentile_latency\", \"95\", \"\", \"\"\n)",
+          "expr": "label_replace(\n  histogram_quantile(0.99, \n    sum by (le, function, module, service_name, commit, version) (\n      rate({__name__=~\"function_calls_duration(_seconds)?_bucket\", function=~\"$function\"}[$__rate_interval])\n      # Attach the `version` and `commit` labels from the `build_info` metric \n      * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n    )\n  ),\n  # Add the label {percentile_latency=\"99\"} to the time series\n  \"percentile_latency\", \"99\", \"\", \"\"\n)\nor\nlabel_replace(\n  histogram_quantile(0.95, \n    sum by (le, function, module, service_name, commit, version) (\n      rate({__name__=~\"function_calls_duration(_seconds)?_bucket\", function=~\"$function\"}[$__rate_interval])\n      # Attach the `version` and `commit` labels from the `build_info` metric \n      * on(instance, job) group_left(version, commit) (last_over_time(build_info[$__rate_interval]) or on (instance, job) up)\n    )\n  ),\n  # Add the label {percentile_latency=\"95\"} to the time series\n  \"percentile_latency\", \"95\", \"\", \"\"\n)",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -364,7 +373,9 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": ["autometrics"],
+  "tags": [
+    "autometrics"
+  ],
   "templating": {
     "list": [
       {
@@ -374,7 +385,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values({__name__=~\"function_calls_count(?:_total)?\"}, function)",
+        "definition": "label_values({__name__=~\"function_calls(_count)?(_total)?\"}, function)",
         "hide": 0,
         "includeAll": false,
         "label": "Show Function(s)",
@@ -382,7 +393,7 @@
         "name": "function",
         "options": [],
         "query": {
-          "query": "label_values({__name__=~\"function_calls_count(?:_total)?\"}, function)",
+          "query": "label_values({__name__=~\"function_calls(_count)?(_total)?\"}, function)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
