@@ -32,9 +32,9 @@ operability between the various different Autometrics libraries and consumers.
 
 Libraries SHOULD expose a decorator, macro, wrapper function, or use another
 meta-programming technique offered by the language to instrument functions and
-methods in the user's source code. Ideally, the function attribute should simply
-be called `autometrics` or `Autometrics`, but libraries MAY append a suffix to
-the name if necessary.
+methods in the user's source code. Ideally, the function attribute SHOULD be
+called `autometrics` or `Autometrics`, but libraries MAY append a suffix to the
+name if necessary.
 
 Libraries MAY enable the decorator, macro, etc to apply to an entire class
 definition. If they do, they SHOULD provide an option for users to skip or
@@ -56,11 +56,11 @@ Autometrics decorator, macro, etc for one or more functions.
 
 Objectives can relate to functions' success rate and/or latencies.
 
-Success rate objectives add the [`objective.name`](#objectivename) and
+Success rate objectives MUST add the [`objective.name`](#objectivename) and
 [`objective.percentile`](#objectivepercentile) labels to the
 [`function.calls`](#functioncalls) metric.
 
-Latency objectives add the [`objective.name`](#objectivename),
+Latency objectives MUST add the [`objective.name`](#objectivename),
 [`objective.percentile`](#objectivepercentile), and
 [`objective.latency_threshold`](#objectivelatency_threshold) labels to the
 [`function.calls.duration`](#functioncallsduration) metric.
