@@ -135,8 +135,9 @@ latency of function calls.
 
 A library MUST track the duration in seconds.
 
-Libraries MUST use the [default OpenTelemetry histogram buckets](https://opentelemetry.io/docs/reference/specification/metrics/sdk/#histogram-aggregations)
-as a default. The Library SHOULD allow the user to override these default buckets.
+Libraries SHOULD support the following bucket boundaries by default: [ 0.005,
+0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1.0, 2.5, 5.0, 7.5, 10.0, ]. The
+Library SHOULD allow the user to override these default buckets.
 
 ### `build_info`
 
@@ -265,9 +266,9 @@ the objective.
 
 This MUST be specified in seconds (**not** milliseconds).
 
-Libraries SHOULD support the
-[default OpenTelemetry histogram buckets](https://opentelemetry.io/docs/reference/specification/metrics/sdk/#histogram-aggregations)
-as label values. Libraries MAY allow users to specify custom latencies but care
+Libraries SHOULD support the following bucket boundaries by default: [ 0.005,
+0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1.0, 2.5, 5.0, 7.5, 10.0, ].
+Libraries MAY allow users to specify custom latencies, but care
 should be taken to ensure that the value of this label matches one of the
 histogram buckets supported by the [`function.calls.duration`](#functioncallsduration)
 metric.
