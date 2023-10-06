@@ -70,12 +70,9 @@ Latency objectives add the [`objective.name`](#objectivename),
 Autometrics uses the [OpenTelemetry Metric Semantic Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/README.md)
 for naming metrics, including using `.`'s as separators.
 
-When the metrics are exported to Prometheus, all dot (`.`) separators are
-replaced by underscores (`_`). Suffixes are appended where required by
-Prometheus/OpenMetrics.
-
 When the metrics are exported to Prometheus, all dot (`.`) separators in the
-label keys are replaced by underscores (`_`).
+metric name and label keys are replaced by underscores (`_`). Suffixes are
+appended where required by Prometheus/OpenMetrics.
 
 Label values MAY contain any Unicode characters.
 
