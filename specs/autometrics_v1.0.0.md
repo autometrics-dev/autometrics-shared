@@ -296,7 +296,9 @@ the same `service.name`.
 Libraries SHOULD support setting the `service.name` using environment variables
 (`AUTOMETRICS_SERVICE_NAME` and `OTEL_SERVICE_NAME`, with the first taking
 precedence if both are set). Libraries MAY also support configuring this value
-in an initialization function.
+in an initialization function. If the service name is not set by the user, then
+the library MUST set a default based on the user's project, this could be
+something like a package name or the binary name.
 
 ### `version`
 
