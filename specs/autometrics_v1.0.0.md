@@ -112,7 +112,7 @@ If the library is able to determine which function called the given function,
 then it MUST set the caller information in the `caller.function` and
 `caller.module` labels. If the caller is not known, either it is the entrypoint
 or the library is unable to determine the caller, then the `caller.function` and
-`caller.module` labels MUST be absent.
+`caller.module` labels MAY be absent or empty (`""`).
 
 ### `function.calls.duration`
 
