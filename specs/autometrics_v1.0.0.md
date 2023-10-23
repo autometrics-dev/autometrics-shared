@@ -25,6 +25,8 @@ operability between the various different Autometrics libraries and consumers.
   - [`result`](#result)
   - [`service.name`](#servicename)
   - [`version`](#version)
+  - [`repository.url`](#repositoryurl)
+  - [`repository.provider`](#repositoryprovider)
 - [Changelog](#changelog)
   - [v1.0.0](#v100)
 
@@ -157,6 +159,8 @@ possible to join this metric with other metrics to enrich other metrics.
 | [`branch`](#branch) | optional | |
 | [`service.name`](#servicename) | required | |
 | [`autometrics.version`](#autometricsversion) | required | |
+| [`repository.url`](#repositoryurl) | optional | |
+| [`repository.provider`](#repositoryprovider) | optional | |
 
 This is a gauge or up/down counter. It MUST always have the value of `1.0`.
 
@@ -306,6 +310,28 @@ The version of the user's project, ideally using
 [Semantic Versioning](https://semver.org/). It SHOULD only contain the version
 number and SHOULD NOT start with a `v`.
 
+### `repository.url`
+
+A URL to the user's project git or other scm repository. This SHOULD be a URL
+that makes sense for the repository type. For example, for a git repository, it
+MAY be a HTTP URL or a SSH URL.
+
+A library MUST use the value from the `AUTOMETRICS_REPOSITORY_URL` environment
+variable, if set. It SHOULD also allow for a value to be specified in the
+initialization function. A library MAY also attempt to determine the repository
+by itself, but the user MUST be able to opt-out of this behavior.
+
+### `repository.provider`
+
+A hint to which provider is being used to host the repository. A consumer can
+use this to provider deeper integration. The value MUST be a freeform string to
+allow users to specify their own values.
+
+A library MAY try to parse the `repository.url` to determine the provider. It
+MUST allow the user to specify their own value using the
+`AUTOMETRICS_REPOSITORY_PROVIDER` environment variable. The library MAY use the
+initialization function to override this value as well.
+
 ## Changelog
 
 ### v1.0.0
@@ -314,3 +340,4 @@ number and SHOULD NOT start with a `v`.
 - Add module to caller information
   - Add `caller.module` label to `function.calls` metric
   - Rename `caller` label to `caller.function` in `function.calls` metric
+- Add `repository.url` and `repository.provider` labels to `build_info` metric
