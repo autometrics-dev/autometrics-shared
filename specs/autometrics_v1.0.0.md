@@ -329,8 +329,8 @@ allow users to specify their own values.
 
 A library MAY try to parse the `repository.url` to determine the provider. It
 MUST allow the user to specify their own value using the
-`AUTOMETRICS_REPOSITORY_PROVIDER`. The library MAY use the initialization
-function to override this value as well.
+`AUTOMETRICS_REPOSITORY_PROVIDER` environment variable. The library MAY use the
+initialization function to override this value as well.
 
 ## Changelog
 
