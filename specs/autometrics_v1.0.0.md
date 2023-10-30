@@ -245,7 +245,9 @@ If a function has an [SLO](#service-level-objectives-slos) attached, this label
 MUST contain the user-specified name of the objective. If there is no SLO
 attached, this label MUST be absent or empty (`""`).
 
-The library SHOULD warn users against declaring objective names with certain special characters, such as `%`, `(`, and `)`.
+The library SHOULD warn users when an objective name contains characters other than alphanumeric characters, `_`, `-`, or a space.
+
+The library SHOULD warn users when an objective name does not start with an alphanumeric character.
 
 ### `objective.percentile`
 
