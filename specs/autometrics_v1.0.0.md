@@ -320,7 +320,7 @@ A URL to the user's project git or other scm repository. This SHOULD be a URL
 that makes sense for the repository type. For example, for a git repository, it
 MAY be a HTTP URL or a SSH URL.
 
-A library MUST use the value from the `AUTOMETRICS_REPOSITORY_URL` environment
+A library SHOULD use the value from the `AUTOMETRICS_REPOSITORY_URL` environment
 variable, if set. It SHOULD also allow for a value to be specified in the
 initialization function. A library MAY also attempt to determine the repository
 by itself, but the user MUST be able to opt-out of this behavior.
@@ -332,7 +332,7 @@ use this to provider deeper integration. The value MUST be a freeform string to
 allow users to specify their own values.
 
 A library MAY try to parse the `repository.url` to determine the provider. It
-MUST allow the user to specify their own value using the
+SHOULD allow the user to specify their own value using the
 `AUTOMETRICS_REPOSITORY_PROVIDER` environment variable. The library MAY use the
 initialization function to override this value as well.
 
@@ -346,3 +346,4 @@ initialization function to override this value as well.
   - Rename `caller` label to `caller.function` in `function.calls` metric
 - Add `repository.url` and `repository.provider` labels to `build_info` metric
 - Add guidance on the `objective_name` label, and suggest to warn library users if they use anything other than alphanumeric characters, `_`, `-`, or a space
+- Relax requirements of environment variables from MUST to SHOULD
