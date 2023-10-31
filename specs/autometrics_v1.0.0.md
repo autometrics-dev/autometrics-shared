@@ -184,7 +184,7 @@ function.
 
 ## Labels
 
-The following is a list of labels and their indented use. See the
+The following is a list of labels and their intended use. See the
 [metrics](#metrics) section for which labels are valid on each metric.
 
 ### `autometrics.version`
