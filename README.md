@@ -4,7 +4,7 @@
 
 This repo contains resources shared between all of the [Autometrics](https://github.com/autometrics-dev) implementations.
 
-## [Autometrics Specification](./SPEC.md)
+## [Autometrics Specification](./specs/autometrics_v1.0.0.md)
 
 ## Dashboards
 

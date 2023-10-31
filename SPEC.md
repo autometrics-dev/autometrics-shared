@@ -1,5 +1,7 @@
 # Autometrics Specification <!-- omit in toc -->
 
+** This spec is deprecated please see the new [versioned specs](./specs). **
+
 This is a work in progress specification for Autometrics.
 
 It aims to describe the full feature set of the Autometrics libraries, but it may have important details missing. We will attempt to update this document to describe the expectations across all of the language implementations.
