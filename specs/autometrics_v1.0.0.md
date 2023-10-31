@@ -245,6 +245,10 @@ If a function has an [SLO](#service-level-objectives-slos) attached, this label
 MUST contain the user-specified name of the objective. If there is no SLO
 attached, this label MUST be absent or empty (`""`).
 
+The library SHOULD warn users when an objective name contains characters other than alphanumeric characters, `_`, `-`, or a space.
+
+The library SHOULD warn users when an objective name does not start with an alphanumeric character.
+
 ### `objective.percentile`
 
 If a function has an [SLO](#service-level-objectives-slos) attached, this label
@@ -341,4 +345,5 @@ initialization function to override this value as well.
   - Add `caller.module` label to `function.calls` metric
   - Rename `caller` label to `caller.function` in `function.calls` metric
 - Add `repository.url` and `repository.provider` labels to `build_info` metric
+- Add guidance on the `objective_name` label, and suggest to warn library users if they use anything other than alphanumeric characters, `_`, `-`, or a space
 - Relax requirements of environment variables from MUST to SHOULD
