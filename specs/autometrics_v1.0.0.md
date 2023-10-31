@@ -345,3 +345,4 @@ initialization function to override this value as well.
   - Add `caller.module` label to `function.calls` metric
   - Rename `caller` label to `caller.function` in `function.calls` metric
 - Add `repository.url` and `repository.provider` labels to `build_info` metric
+- Add guidance on the `objective_name` label, and suggest to warn library users if they use anything other than alphanumeric characters, `_`, `-`, or a space
