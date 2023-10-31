@@ -47,7 +47,7 @@ Libraries MAY need an initialization function.
 Libraries SHOULD expose functionality to make the metrics available to the
 user in either the Prometheus text format or the OpenTelemetry Protocol (otlp).
 It is up to the user to decide whether they want to implement a push or pull
-based model. Libraries MAY provide higher level implementation to expose the
+based model. Libraries MAY provide higher level implementations to expose the
 metrics in a push or pull based model.
 
 ### Service-Level Objectives (SLOs)
@@ -113,7 +113,7 @@ then it MUST always set the result to `ok`.
 If the library is able to determine which function called the given function,
 then it MUST set the caller information in the `caller.function` and
 `caller.module` labels. If the caller is not known, either it is the entrypoint
-or the library is unable to determine the caller, then the `caller.function` and
+or the library is unable to determine the caller, in which case the `caller.function` and
 `caller.module` labels MAY be absent or empty (`""`).
 
 ### `function.calls.duration`
@@ -134,6 +134,7 @@ latency of function calls.
 | [`service.name`](#servicename) | required | |
 | [`objective.name`](#objectivename) | optional | if an [objective](#service-level-objectives-slos) is attached to the given function |
 | [`objective.percentile`](#objectivepercentile) | optional | if an [objective](#service-level-objectives-slos) is attached to the given function |
+| [`objective.latency_threshold`](#objectivelatency_threshold) | optional | if an [objective](#service-level-objectives-slos) is attached to the given function |
 
 A library MUST track the duration in seconds.
 
@@ -143,7 +144,7 @@ Library SHOULD allow the user to override these default buckets.
 
 ### `build_info`
 
-A metrics that contains metadata related to the application. It should be
+A metric that contains metadata related to the application. It should be
 possible to join this metric with other metrics to enrich other metrics.
 
 **Metric type:** Gauge
