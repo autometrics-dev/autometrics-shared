@@ -184,10 +184,11 @@ function.
 
 ## Labels
 
-The following is a list of labels and their intended use. See the
-[metrics](#metrics) section for which labels are valid on each metric.
+The following is a list of labels and their intended use.
 
 ### `autometrics.version`
+
+> Used with metrics: `build_info`
 
 The version of the specification that the library targets. This version MUST
 contain the full version without the `v` prefix.
@@ -199,10 +200,14 @@ For the current specification this SHOULD be `1.0.0`.
 
 ### `branch`
 
+> Used with metrics: `build_info`
+
 The Git branch of the user's project. If this information is not available, this
 label MAY be absent or empty (`""`).
 
 ### `caller.function`
+
+> Used with metrics: `function.calls`
 
 The name of the `function` that invoked the given function. If the caller is
 not known, this label MUST be absent or empty (`""`).
@@ -216,6 +221,8 @@ information has a non-negligible performance overhead.
 
 ### `caller.module`
 
+> Used with metrics: `function.calls`
+
 The `module` of the function that invoked the given function. If the caller is
 not known, this label MUST be absent or empty (`""`).
 
@@ -223,15 +230,21 @@ See [`caller.function`](#callerfunction)
 
 ### `commit`
 
+> Used with metrics: `build_info`
+
 The Git commit hash identifying the snapshot of the user's project. The library
 MAY truncate the commit hash to its short representation. If this information is
 not available, this label MUST be absent or empty (`""`).
 
 ### `function`
 
+> Used with metrics: `function.calls`, `function.calls.duration`, `function.calls.concurrent`
+
 The name of the function or method, exactly as it appears in the source code.
 
 ### `module`
+
+> Used with metrics: `function.calls`, `function.calls.duration`, `function.calls.concurrent`
 
 The fully-qualified module or file path of the `function`.
 
@@ -242,6 +255,8 @@ The exact contents of this label value are assumed to be language-specific.
 
 ### `objective.name`
 
+> Used with metrics: `function.calls`, `function.calls.duration`
+
 If a function has an [SLO](#service-level-objectives-slos) attached, this label
 MUST contain the user-specified name of the objective. If there is no SLO
 attached, this label MUST be absent or empty (`""`).
@@ -251,6 +266,8 @@ The library SHOULD warn users when an objective name contains characters other t
 The library SHOULD warn users when an objective name does not start with an alphanumeric character.
 
 ### `objective.percentile`
+
+> Used with metrics: `function.calls`, `function.calls.duration`
 
 If a function has an [SLO](#service-level-objectives-slos) attached, this label
 MUST specifies the percentage of requests that should return the `result="ok"`
@@ -269,6 +286,8 @@ rules for the custom percentiles.
 
 ### `objective.latency_threshold`
 
+> Used with metrics: `function.calls.duration`
+
 If a function has an [SLO](#service-level-objectives-slos) attached, this MUST
 specify the maximum duration of function calls that are considered meeting
 the objective.
@@ -284,6 +303,8 @@ metric.
 
 ### `result`
 
+> Used with metrics: `function.calls`
+
 Whether the function executed successfully or errored. An error MAY either mean
 that the function returned an error or that it threw an exception.
 
@@ -294,6 +315,8 @@ determining whether the `result` label should be `"ok"` or `"error"`, for
 example to allow users to treat client-side errors as `"ok"`.
 
 ### `service.name`
+
+> Used with metrics: `build_info`, `function.calls`, `function.calls.duration`, `function.calls.concurrent`
 
 The logical name of a service. This matches the
 [OpenTelemetry Service specification](https://github.com/open-telemetry/semantic-conventions/tree/main/specification/resource/semantic_conventions#service).
@@ -311,11 +334,15 @@ something like a package name or the binary name.
 
 ### `version`
 
+> Used with metrics: `build_info`
+
 The version of the user's project, ideally using
 [Semantic Versioning](https://semver.org/). It SHOULD only contain the version
 number and SHOULD NOT start with a `v`.
 
 ### `repository.url`
+
+> Used with metrics: `build_info`
 
 A URL to the user's project git or other scm repository. This SHOULD be a URL
 that makes sense for the repository type. For example, for a git repository, it
@@ -327,6 +354,8 @@ initialization function. A library MAY also attempt to determine the repository
 by itself, but the user MUST be able to opt-out of this behavior.
 
 ### `repository.provider`
+
+> Used with metrics: `build_info`
 
 A hint to which provider is being used to host the repository. A consumer can
 use this to provider deeper integration. The value MUST be a freeform string to
