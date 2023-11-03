@@ -251,7 +251,17 @@ The fully-qualified module or file path of the `function`.
 The combination of the `function` and `module` labels MUST be sufficient to
 uniquely identify the function within the project's source code.
 
-The exact contents of this label value are assumed to be language-specific.
+The exact contents of these label values (`module` and `function`) are assumed
+to be language-specific. Notably, for type (classes, structs, enums...) methods
+libraries SHOULD include the type/prototype name as a prefix in the `function`
+label with a language-specific separator (e.g. `::` in Rust), but if it is
+technically difficult, libraries MAY include the type/prototype name as part
+of the `module` value.
+
+In all cases, libraries MUST include type name in either `module` or `function` label,
+they MUST consistently use the same label all the time, and
+SHOULD document the choice so that users know how to query "all metrics for
+a given class".
 
 ### `objective.name`
 
