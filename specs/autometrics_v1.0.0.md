@@ -81,6 +81,11 @@ appended where required by Prometheus/OpenMetrics.
 
 Label values MAY contain any Unicode characters.
 
+All environment variables MUST be evaluated during runtime (if available in the
+language), a library MAY capture a default value during a compilation step if
+this is available for the library, this value MUST be overwritten by a runtime
+environment variable if it is set.
+
 ## Metrics
 
 The following is a list of metrics that MUST be exported when annotated by an
