@@ -3,6 +3,9 @@
 This is a specification for Autometrics. Its high level goal is to enable
 operability between the various different Autometrics libraries and consumers.
 
+This specification uses the conventions described in
+[RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+
 - [API](#api)
   - [Service-Level Objectives (SLOs)](#service-level-objectives-slos)
 - [Conventions](#conventions)
