@@ -1,0 +1,23 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+# Example to push metrics towards Prometheus (not recommended by Prometheus). 
+# Refer to the endpoint you have Prometheus running in your private network.
+# Include /api/v1/write to the endpoint
+# 
+exporters:
+  prometheusremotewrite:
+    endpoint: http://prometheus:9090/api/v1/write
+    resource_to_telemetry_conversion:
+      enabled: true # Convert resource attributes to metric labels
+
+service:
+  telemetry:
+    logs:
+      level: "debug"
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      exporters: [prometheusremotewrite]
