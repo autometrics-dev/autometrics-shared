@@ -1,4 +1,4 @@
-# OpenTelemetry (OTel) Collector deployment ressources
+# OpenTelemetry (OTel) Collector deployment resources
 
 The detailed guides for the different platforms can be found [here](https://docs.autometrics.dev/deploying-otel-collector)
 

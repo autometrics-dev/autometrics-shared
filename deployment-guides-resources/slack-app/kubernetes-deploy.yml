@@ -1,0 +1,54 @@
+# This is a sample kubernetes deployment file for autometrics slack app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slack-app
+  labels:
+    app: slack-app
+spec:
+  selector:
+    matchLabels:
+      app: slack-app
+  template:
+    metadata:
+      labels:
+        app: slack-app
+    spec:
+      containers:
+        - name: slack-app
+          image: "autometrics/slack-app:latest"
+          imagePullPolicy: Always
+          resources: {}
+          env:
+            - name: RUST_LOG
+              value: "info"
+            - name: LOG_JSON
+              value: "true"
+            - name: LISTEN_HOST
+              value: 0.0.0.0
+            - name: PORT
+              value: "3031"
+            - name: BASE_URL
+              value: "https://slack-app.example.com"
+            - name: EXPLORER_URL
+              value: https://explorer.autometrics.dev
+            - name: SLACK_CHANNEL
+              value: "test-slack-app"
+            - name: SLACK_BOT_TOKEN
+              value: xoxb-000000000-000000000-000000000
+            - name: PROMETHEUS_URL
+              value: http://prometheus:9090
+            - name: STORAGE_DIR
+              value: /data/
+            - name: DB_CONNECTION_STRING
+              value: "sqlite:///data/slack-app.db?mode=rwc"
+          ports:
+            - containerPort: 3031
+          volumeMounts:
+            - name: storage-volume
+              mountPath: /data
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: slack-app
