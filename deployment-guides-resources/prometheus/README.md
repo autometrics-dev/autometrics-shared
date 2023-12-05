@@ -1,4 +1,4 @@
-# Prometheus deployment ressources
+# Prometheus deployment resources
 
 The detailed guides for the different platforms can be found [here](https://docs.autometrics.dev/deploying-prometheus)
 
