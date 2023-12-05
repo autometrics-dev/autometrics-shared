@@ -1,0 +1,27 @@
+_metadata:
+  major_version: 1
+  minor_version: 0
+display_information:
+  name: Autometrics
+  description: This bot provides a way for our Autometrics slack-app to communicate with the Slack API.
+  long_description: |
+    This bot provides a way for our Autometrics slack-app to communicate with
+    the Slack API. The autometrics slack-app will post messages to a specified
+    channel whenever a alert occurs in your alertmanager (note this requires
+    modifications in your alertmanager configuration).
+  background_color: "#00FFAA"
+settings:
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
+features:
+  app_home:
+    home_tab_enabled: false
+    messages_tab_enabled: false
+  bot_user:
+    display_name: Autometrics
+    always_online: false
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
